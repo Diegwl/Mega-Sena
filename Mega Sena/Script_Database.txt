@@ -1,0 +1,10 @@
+CREATE TABLE `jogos` (
+  `id` int(11) NOT NULL,
+  `n1` int(11) NOT NULL,
+  `n2` int(11) NOT NULL,
+  `n3` int(11) NOT NULL,
+  `n4` int(11) NOT NULL,
+  `n5` int(11) NOT NULL,
+  `n6` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

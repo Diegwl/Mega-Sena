@@ -125,6 +125,7 @@ class Aplicacao():
         self.scrollLista = Scrollbar(self.frame2, orient='vertical')
         self.listaCli.configure(yscrollcommand=self.scrollLista.set)
         self.scrollLista.place(relx=0.949, rely=0.079, relwidth=0.02, relheight=0.84)
+        self.scrollLista.config(command=self.listaCli.yview)
 
     def delete_lista(self):
         self.listaCli.delete(*self.listaCli.get_children())
@@ -154,19 +155,18 @@ class Aplicacao():
         fig = plt.Figure(figsize=(12, 6), dpi=50)
         ax = fig.add_subplot(111)
 
-        numeros = ["1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"
-                   "31", "32", "33", "34", "35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
+        numeros = [n for n in range(1, 61)]
 
         counts = []
 
         sql = f"SELECT * from jogos"
         cursor.execute(sql)
         linhas = cursor.fetchall()
-        for i in range(1, 60):
+        for i in range(1, 61):
             cont = 0
             for linha in linhas:
-                for i in range(1, 7):
-                    if linha[i] == i or linha[i] == i or linha[i] == i or linha[i] == i or linha[i] == i or linha[i] == i:
+                for j in range(1, 7):
+                    if linha[j] == i:
                         cont += 1
             counts.append(cont)
 
@@ -179,6 +179,11 @@ class Aplicacao():
         canva.get_tk_widget().place(relx=0.05, rely=0.50)
 
     def jogar(self):
+        self.insertDuque.delete(0, END)
+        self.insertTerno.delete(0, END)
+        self.insertQuadra.delete(0, END)
+        self.insertQuina.delete(0, END)
+        self.insertMega.delete(0, END)
         if self.insertN1.get().isnumeric() and self.insertN2.get().isnumeric() and self.insertN3.get().isnumeric() and \
                 self.insertN4.get().isnumeric() and self.insertN5.get().isnumeric() and self.insertN6.get().isnumeric():
             n1 = int(self.insertN1.get())

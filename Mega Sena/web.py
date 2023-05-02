@@ -35,7 +35,9 @@ class Web:
                     x = self.driver.find_element(By.XPATH, self.map['numero']['xpath'].replace('$$', f"{cont}")).text
                     n.append(x[:])
                     if x == "Mega da Virada":
-                        n.pop()
+                        cont = cont + 1
+                        x = self.driver.find_element(By.XPATH, self.map['numero']['xpath'].replace('$$', f"{cont}")).text
+                        n.append(x[:])
                     print(n[cont-1], end=" ")
                 inserir_jogos(id, n[cont-6], n[cont-5], n[cont-4], n[cont-3], n[cont-2], n[cont-1])
                 print()

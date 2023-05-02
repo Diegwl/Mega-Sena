@@ -21,9 +21,11 @@ def procurar_jogo(n1, n2, n3, n4, n5, n6):
     for linha in linhas:
         cont = 0
         for i in range(1, 7):
-            print(i)
+            print(i, end=": ")
+            print(linha[i])
             if linha[i] == n1 or linha[i] == n2 or linha[i] == n3 or linha[i] == n4 or linha[i] == n5 or linha[i] == n6:
                 cont += 1
+                print("foi")
         if cont == 2:
             duques += 1
         elif cont == 3:
